@@ -1,2 +1,45 @@
 #!/usr/bin/env ruby
-puts 'Hello, world! '
+
+# Say welcome for the players
+puts 'Welcome to the Tic Tac Toe '
+
+# Ask for the username
+puts 'Enter your name'
+player_one = gets.chomp
+player_two = gets.chomp
+
+puts "Hi #{player_one} and #{player_two}"
+# Ask them to choose symbol
+puts 'Please enter your symbol'
+player_symp = gets.chomp
+puts "your symbol is #{player_symp}"
+
+# display the body game "the board"
+board = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9]
+]
+# ask the first player to make his first move puts "Your movement"
+puts 'Player_1 your turn. Choose a number between 1 and 9'
+p_one = gets.chomp
+p p_one
+# display the body game "the board"
+p board
+# ask the second player to make his first move puts "Your movement"
+puts 'Player_2 your turn. Choose a number between 1 and 9'
+p_two = gets.chomp
+p p_two
+# display the body game "the board" again
+p board
+# display the result after winning
+puts "The winner is #{winner}"
+# Ask "do you want to play again ?" >> or close the game (y, n)
+puts 'Do you want to play again? [y/n]'
+again = gets.chomp
+if again == 'y'
+  puts 'play again'
+
+else
+  puts 'end game'
+end
