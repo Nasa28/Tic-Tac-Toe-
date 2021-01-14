@@ -24,7 +24,6 @@ while symp == false
   else
     puts 'Invalid symbol'
   end
-
 end
 
 puts "#{player_one} your symbol is #{player1_symp}"
@@ -39,7 +38,7 @@ board = [
 # ask the first player to make his first move puts "Your movement"
 
 game_on = true
-
+winner = false
 # initial instructions for player
 
 while game_on
@@ -58,7 +57,7 @@ while game_on
   end
 
   game_on = false if winner || draw
-  # and/or draw (the exact condition in this milestone is not important)
+  
 
   # loop for each move
   puts 'Player_2 your turn. Choose a number between 1 and 9'
@@ -69,13 +68,16 @@ while game_on
       movement = true
       p p_two
       p board
+      winner = "#{player_one}"
     else
       puts 'wrong input'
     end
   end
   game_on = false if winner || draw
-  # and/or draw (the exact condition in this milestone is not important)
+
 end
+
+
 
 # display the result after winning
 winning = 'winning cases'
@@ -92,6 +94,6 @@ again = gets.chomp
 if again == 'y'
   puts 'play again'
 
-else
+elsif again == "n"
   puts 'end game'
 end
