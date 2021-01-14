@@ -73,7 +73,7 @@ class Game
 # Check winner
     def check(gameCheckWinMethod)
       if gameCheckWinMethod != false
-        puts "The winner is #{gameCheckWinMethod}"
+        puts "The winner is #{gameCheckWinMethod.name}"
         return true
       end
     end
