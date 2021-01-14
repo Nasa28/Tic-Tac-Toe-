@@ -9,12 +9,12 @@ class Player
     end
 end
 
-# Class of Player
+# Class of Board
 class Board
     attr_accessor :board
-
     def initialize
         @board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        @totalM = 0
     end
 
     def updateBoard(number, symbol)
@@ -27,10 +27,11 @@ class Board
         puts "#{@board[3]} | #{@board[4]} | #{@board[5]}"
         puts "---------"
         puts "#{@board[6]} | #{@board[7]} | #{@board[8]}"
+        @totalM += 1
     end
 end
 
-# Class of Player
+# Class of Game
 class Game
 
     def initialize
@@ -49,4 +50,18 @@ class Game
       end
     end
 
+end
+
+
+# Check winner
+
+def Check(gameCheckWinMethod)
+    if gameCheckWinMethod != false
+        puts "The winner is #{gameCheckWinMethod}"
+
+        right = true
+
+        while right
+
+    end
 end

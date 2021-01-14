@@ -2,18 +2,17 @@
 
 require_relative '../lib/game_logic.rb'
 
-game = Game.new
 # Say welcome for the players
 puts 'Welcome to the Tic Tac Toe '
 
 # Ask for the username
 puts 'Player_one, Enter your name'
-player_one = gets.chomp.capitalize
+player_one_name = gets.chomp.capitalize
 puts 'Player_two, Enter your name'
 
-player_two = gets.chomp.capitalize
+player_two_name = gets.chomp.capitalize
 
-puts "Hi #{player_one} and #{player_two} welcome to Tic Tac Toe game"
+
 # Ask them to choose symbol
 
 symp = false
@@ -29,15 +28,16 @@ while symp == false
   end
 end
 
-puts "#{player_one} your symbol is #{player1_symp}"
-puts "#{player_two} your symbol is #{player2_symp}"
+player1 = Player.new(player_one_name, player1_symp)
+player1 = Player.new(player_two_name, player2_symp)
+
+puts "Hi #{player1.name} and #{player2.name} welcome to Tic Tac Toe game"
+puts "#{player1.name} your symbol is #{player1.symbol}"
+puts "#{player2.name} your symbol is #{player2.symbol}"
 
 # display the body game "the board"
-board = [
-  [1, 2, 3],
-  [4, 5, 6],
-  [7, 8, 9]
-]
+game = Game.new
+board = Board.new
 # ask the first player to make his first move puts "Your movement"
 
 game_on = true
@@ -50,10 +50,11 @@ while game_on
   movement = false
   while movement == false
     p_one = gets.chomp.to_i
-    if (1..9).include?(p_one)
+    if board.board.include?(p_one)
       movement = true
-      p p_one
-      p board
+      board.updateBoard(p_one, player1.symbol)
+      board.displayBoard
+      game.checkWin(board.board, player1.name)
     else
       puts 'wrong input'
     end
@@ -67,11 +68,10 @@ while game_on
   movement = false
   while movement == false
     p_two = gets.chomp.to_i
-    if (1..9).include?(p_two)
+    if board.board.include?(p_two)
       movement = true
-      p p_two
-      p board
-      winner = "#{player_one}"
+      board.updateBoard(p_two, player2.symbol)
+      board.displayBoard
     else
       puts 'wrong input'
     end
