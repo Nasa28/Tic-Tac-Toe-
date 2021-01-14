@@ -79,17 +79,10 @@ end
 
 # display the result after winning
 winning = 'winning cases'
-
-
-if winning
-  puts "The winner is #{winner}"
-end
-
-
+puts "The winner is #{winner}" if winning
+  
 #  draww movement
-if draw
-  puts 'There is no winner, It is a DRAW'
-end
+puts 'There is no winner, It is a DRAW' if draw
 
 # Ask "do you want to play again ?" >> or close the game (y, n)
 puts 'Do you want to play again? [y/n]'
