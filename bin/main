@@ -67,7 +67,7 @@ while game_on
       movement = true
       board
       winner = player_one.to_s
-      draw = true
+      
     else
       puts 'wrong input'
     end
