@@ -54,7 +54,34 @@ while game_on
       movement = true
       board.updateBoard(p_one, player1.symbol)
       board.displayBoard
-      game.checkWin(board.board, player1.name)
+      winner = game.check(game.checkWin(board.board, player1))
+      want = true
+      while want
+        puts "Do you want to play again? [y, n]"
+        again = gets.chomp
+        if again == 'y'
+          puts 'play again'
+          want = false
+        elsif again == "n"
+          puts 'end game'
+          want = false
+      end
+
+    if(board.board.any?(!Numeric))
+      game.setDraws
+      want = true
+      while want
+        puts "Do you want to play again? [y, n]"
+        again = gets.chomp
+        if again == 'y'
+          puts 'play again'
+          want = false
+        elsif again == "n"
+          puts 'end game'
+          want = false
+        end
+      end
+    end
     else
       puts 'wrong input'
     end
@@ -72,6 +99,35 @@ while game_on
       movement = true
       board.updateBoard(p_two, player2.symbol)
       board.displayBoard
+      winner = game.check(game.checkWin(board.board, player2))
+      want = true
+      while want
+        puts "Do you want to play again? [y, n]"
+        again = gets.chomp
+        if again == 'y'
+          puts 'play again'
+          want = false
+        elsif again == "n"
+          puts 'end game'
+          want = false
+        end
+      end
+
+    if(board.board.any?(!Numeric))
+      game.setDraws
+      want = true
+      while want
+        puts "Do you want to play again? [y, n]"
+        again = gets.chomp
+        if again == 'y'
+          puts 'play again'
+          want = false
+        elsif again == "n"
+          puts 'end game'
+          want = false
+        end
+      end
+    end
     else
       puts 'wrong input'
     end
