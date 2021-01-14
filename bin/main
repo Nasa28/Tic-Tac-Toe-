@@ -4,30 +4,31 @@
 puts 'Welcome to the Tic Tac Toe '
 
 # Ask for the username
-puts 'Enter your name'
-player_one = gets.chomp
-player_two = gets.chomp
+puts 'Player_one, Enter your name'
+player_one = gets.chomp.capitalize
+puts 'Player_two, Enter your name'
 
-puts "Hi #{player_one} and #{player_two}"
+player_two = gets.chomp.capitalize
+
+puts "Hi #{player_one} and #{player_two} welcome to Tic Tac Toe game"
 # Ask them to choose symbol
 
 symp = false
 
 while symp == false
-  puts 'Please enter your symbol [X, O]'
+  puts " #{player_one} Please enter your symbol [X, O]"
   player1_symp = gets.chomp.upcase
   if %w[X O].include?(player1_symp)
     symp = true
-    player2_symp = (player1_symp == "X"? "O": "X")
+    player2_symp = (player1_symp == 'X' ? 'O' : 'X')
   else
-    puts "Invalid symbol"
+    puts 'Invalid symbol'
   end
-  
+
 end
 
-
 puts "#{player_one} your symbol is #{player1_symp}"
-puts "#{player_two} your symbol is #{player1_symp}"
+puts "#{player_two} your symbol is #{player2_symp}"
 
 # display the body game "the board"
 board = [
@@ -41,17 +42,19 @@ game_on = true
 
 # initial instructions for player
 
-
 while game_on
   puts 'Player_1 your turn. Choose a number between 1 and 9'
   # loop for each move
-  p_one = gets.chomp
-  if p_one
-    p p_one
-    p board
-  else
-    puts 'wrong input'
-    p_one = gets.chomp
+  movement = false
+  while movement == false
+    p_one = gets.chomp.to_i
+    if (1..9).include?(p_one)
+      movement = true
+      p p_one
+      p board
+    else
+      puts 'wrong input'
+    end
   end
 
   game_on = false if winner
@@ -59,15 +62,17 @@ while game_on
 
   # loop for each move
   puts 'Player_2 your turn. Choose a number between 1 and 9'
-  p_two = gets.chomp
-  if p_two
-    p p_two
-    p board
-  else
-    puts 'wrong input'
-    p_two = gets.chomp
+  movement = false
+  while movement == false
+    p_two = gets.chomp.to_i
+    if (1..9).include?(p_two)
+      movement = true
+      p p_two
+      p board
+    else
+      puts 'wrong input'
+    end
   end
-
   game_on = false if winner
   # and/or draw (the exact condition in this milestone is not important)
 end
