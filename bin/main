@@ -57,7 +57,7 @@ while game_on
     end
   end
 
-  game_on = false if winner
+  game_on = false if winner || draw
   # and/or draw (the exact condition in this milestone is not important)
 
   # loop for each move
@@ -73,7 +73,7 @@ while game_on
       puts 'wrong input'
     end
   end
-  game_on = false if winner
+  game_on = false if winner || draw
   # and/or draw (the exact condition in this milestone is not important)
 end
 
