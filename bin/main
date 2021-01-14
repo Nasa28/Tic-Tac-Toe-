@@ -1,5 +1,4 @@
 #!/usr/bin/env ruby
-
 # Say welcome for the players
 puts 'Welcome to the Tic Tac Toe '
 
@@ -30,15 +29,17 @@ puts "#{player_one} your symbol is #{player1_symp}"
 puts "#{player_two} your symbol is #{player2_symp}"
 
 # display the body game "the board"
-board = [
-  [1, 2, 3],
-  [4, 5, 6],
-  [7, 8, 9]
-]
+def board
+  board_arr = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+  p board_arr[0]
+  p board_arr[1]
+  p board_arr[2]
+end
 # ask the first player to make his first move puts "Your movement"
 
 game_on = true
 winner = false
+draw = false
 # initial instructions for player
 
 while game_on
@@ -49,15 +50,13 @@ while game_on
     p_one = gets.chomp.to_i
     if (1..9).include?(p_one)
       movement = true
-      p p_one
-      p board
+      board
     else
       puts 'wrong input'
     end
   end
 
   game_on = false if winner || draw
-  
 
   # loop for each move
   puts 'Player_2 your turn. Choose a number between 1 and 9'
@@ -66,18 +65,16 @@ while game_on
     p_two = gets.chomp.to_i
     if (1..9).include?(p_two)
       movement = true
-      p p_two
-      p board
-      winner = "#{player_one}"
+      board
+      winner = player_one.to_s
     else
       puts 'wrong input'
     end
   end
+
   game_on = false if winner || draw
 
 end
-
-
 
 # display the result after winning
 winning = 'winning cases'
@@ -91,9 +88,10 @@ end
 # Ask "do you want to play again ?" >> or close the game (y, n)
 puts 'Do you want to play again? [y/n]'
 again = gets.chomp
-if again == 'y'
+case again
+when 'y'
   puts 'play again'
 
-elsif again == "n"
+when 'n'
   puts 'end game'
 end
