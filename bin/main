@@ -10,9 +10,24 @@ player_two = gets.chomp
 
 puts "Hi #{player_one} and #{player_two}"
 # Ask them to choose symbol
-puts 'Please enter your symbol'
-player_symp = gets.chomp
-puts "your symbol is #{player_symp}"
+
+symp = false
+
+while symp == false
+  puts 'Please enter your symbol [X, O]'
+  player1_symp = gets.chomp.upcase
+  if %w[X O].include?(player1_symp)
+    symp = true
+    player2_symp = (player1_symp == "X"? "O": "X")
+  else
+    puts "Invalid symbol"
+  end
+  
+end
+
+
+puts "#{player_one} your symbol is #{player1_symp}"
+puts "#{player_two} your symbol is #{player1_symp}"
 
 # display the body game "the board"
 board = [
@@ -25,9 +40,10 @@ board = [
 game_on = true
 
 # initial instructions for player
-puts 'Player_1 your turn. Choose a number between 1 and 9'
+
 
 while game_on
+  puts 'Player_1 your turn. Choose a number between 1 and 9'
   # loop for each move
   p_one = gets.chomp
   if p_one
@@ -42,6 +58,7 @@ while game_on
   # and/or draw (the exact condition in this milestone is not important)
 
   # loop for each move
+  puts 'Player_2 your turn. Choose a number between 1 and 9'
   p_two = gets.chomp
   if p_two
     p p_two
