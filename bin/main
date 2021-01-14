@@ -38,101 +38,111 @@ puts "#{player2.name} your symbol is #{player2.symbol}"
 # display the body game "the board"
 game = Game.new
 board = Board.new
-# ask the first player to make his first move puts "Your movement"
 
-game_on = true
-winner = false
-draw = false
-# initial instructions for player
+repeat? = false
 
-while game_on
-  puts 'Player_1 your turn. Choose a number between 1 and 9'
-  # loop for each move
-  movement = false
-  while movement == false
-    p_one = gets.chomp.to_i
-    if board.board.include?(p_one)
-      movement = true
-      board.updateBoard(p_one, player1.symbol)
-      board.displayBoard
-      winner = game.check(game.checkWin(board.board, player1))
-      want = true if winner ==true 
-      while want
-        puts "Do you want to play again? [y, n]"
-        again = gets.chomp
-        if again == 'y'
-          puts 'play again'
-          want = false
-        elsif again == "n"
-          puts 'end game'
-          want = false
-      end
+while repeat
+  game_on = true
+  winner = false
+  draw = false
+  # initial instructions for player
 
-    if(board.board.any?(!Numeric))
-      game.setDraws
-      want = true
-      while want
-        puts "Do you want to play again? [y, n]"
-        again = gets.chomp
-        if again == 'y'
-          puts 'play again'
-          want = false
-        elsif again == "n"
-          puts 'end game'
-          want = false
+  while game_on
+    puts 'Player_1 your turn. Choose a number between 1 and 9'
+    # loop for each move
+    movement = false
+    while movement == false
+        p_one = gets.chomp.to_i
+        if board.board.include?(p_one)
+          movement = true
+          board.updateBoard(p_one, player1.symbol)
+          board.displayBoard
+          winner = game.check(game.checkWin(board.board, player1))
+          puts "The result is \n #{player1.name}(#{player1.getWinnings}) VS #{player2.name}(#{player2.getWinnings})" if winner ==true 
+          want = true if winner ==true 
+          while want
+            puts "Do you want to play again? [y, n]"
+            again = gets.chomp
+            if again == 'y'
+              repeat = true
+              want = false
+            elsif again == "n"
+              want = false
+          end
+
+        if(board.board.any?(!Numeric))
+          game.setDraws
+          draw = true
+          want = true
+          while want
+            puts "Do you want to play again? [y, n]"
+            again = gets.chomp
+            if again == 'y'
+              repeat = true
+              want = false
+            elsif again == "n"
+              puts 'end game'
+              want = false
+            end
+          end
+        else
+          puts 'wrong input'
         end
+    end
+
+    # game_on = false if winner || draw
+    break if winner || draw
+    
+
+    # loop for each move
+    puts 'Player_2 your turn. Choose a number between 1 and 9'
+    movement = false
+    while movement == false
+      p_two = gets.chomp.to_i
+      if board.board.include?(p_two)
+        movement = true
+        board.updateBoard(p_two, player2.symbol)
+        board.displayBoard
+        winner = game.check(game.checkWin(board.board, player2))
+        puts "\n \nThe result is \n #{player1.name}(#{player1.getWinnings}) VS #{player2.name}(#{player2.getWinnings}) \n" if winner ==true 
+        want = true if winner ==true 
+        while want
+          puts "Do you want to play again? [y, n]"
+          again = gets.chomp
+          if again == 'y'
+            repeat = true
+            want = false
+          elsif again == "n"
+            puts 'end game'
+            want = false
+          end
+        end
+
+        if(board.board.any?(!Numeric))
+          game.setDraws
+          draw = true
+          want = true
+          while want
+            puts "Do you want to play again? [y, n]"
+            again = gets.chomp
+            if again == 'y'
+              repeat = true
+              want = false
+            elsif again == "n"
+              puts 'end game'
+              want = false
+            end
+          end
+        end
+      else
+        puts 'wrong input'
       end
-    else
-      puts 'wrong input'
+    end
+    # game_on = false if winner || draw
+    break if winner || draw
     end
   end
-
-  game_on = false if winner || draw
-  
-
-  # loop for each move
-  puts 'Player_2 your turn. Choose a number between 1 and 9'
-  movement = false
-  while movement == false
-    p_two = gets.chomp.to_i
-    if board.board.include?(p_two)
-      movement = true
-      board.updateBoard(p_two, player2.symbol)
-      board.displayBoard
-      winner = game.check(game.checkWin(board.board, player2))
-      want = true if winner ==true 
-      while want
-        puts "Do you want to play again? [y, n]"
-        again = gets.chomp
-        if again == 'y'
-          puts 'play again'
-          want = false
-        elsif again == "n"
-          puts 'end game'
-          want = false
-        end
-      end
-
-    if(board.board.any?(!Numeric))
-      game.setDraws
-      want = true
-      while want
-        puts "Do you want to play again? [y, n]"
-        again = gets.chomp
-        if again == 'y'
-          puts 'play again'
-          want = false
-        elsif again == "n"
-          puts 'end game'
-          want = false
-        end
-      end
-    end
-    else
-      puts 'wrong input'
-    end
   end
-  game_on = false if winner || draw
-  end
-end
-end
+
+
+end  
