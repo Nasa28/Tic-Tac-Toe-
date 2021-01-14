@@ -80,7 +80,7 @@ end
 # display the result after winning
 winning = 'winning cases'
 puts "The winner is #{winner}" if winning
-  
+
 #  draww movement
 puts 'There is no winner, It is a DRAW' if draw
 
