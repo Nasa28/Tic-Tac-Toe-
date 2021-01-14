@@ -67,6 +67,7 @@ while game_on
       movement = true
       board
       winner = player_one.to_s
+      draw = true
     else
       puts 'wrong input'
     end
@@ -78,11 +79,16 @@ end
 
 # display the result after winning
 winning = 'winning cases'
+
+
 if winning
   puts "The winner is #{winner}"
+end
 
-elsif draw
-  puts 'There is no winner'
+
+#  draww movement
+if draw
+  puts 'There is no winner, It is a DRAW'
 end
 
 # Ask "do you want to play again ?" >> or close the game (y, n)
