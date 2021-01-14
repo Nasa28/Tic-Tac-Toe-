@@ -1,5 +1,8 @@
 #!/usr/bin/env ruby
 
+require_relative '../lib/game_logic.rb'
+
+game = Game.new
 # Say welcome for the players
 puts 'Welcome to the Tic Tac Toe '
 
