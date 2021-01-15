@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # Class player
 class Player
   attr_reader :name, :symbol
