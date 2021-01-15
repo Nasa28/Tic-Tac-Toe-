@@ -1,7 +1,6 @@
-# frozen_string_literal: true
+# rubocop:disable Layout/LineLength
 
-# Class of Player
-
+# Class player
 class Player
   attr_reader :name, :symbol
 
@@ -43,38 +42,30 @@ end
 # Class of Game
 class Game
   attr_accessor :draws
+
   def initialize
     @draws = 0
   end
 
   def check_win(board, player)
-    if board[0] == board[1] && board[1] == board[2] || board[3] == board[4] && board[4] == board[5] || board[6] == board[7] && board[7] == board[8]
-      player.set_winnings
-      player
-    elsif board[0] == board[3] && board[3] == board[6] || board[1] == board[4] && board[4] == board[7] || board[2] == board[5] && board[5] == board[8]
-      player.set_winnings
-      player
-    elsif board[0] == board[4] && board[4] == board[8] || board[2] == board[4] && board[4] == board[6]
-      player.set_winnings
-      player
-    else
-      false
+    check = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 4, 8], [2, 4, 6], [0, 3, 6], [1, 4, 7], [2, 5, 8]]
+    check.each do |arr|
+      if board[arr[0]] == board[arr[1]] && board[arr[1]] == board[arr[2]]
+        player.set_winnings
+        return player
+      end
     end
-  end
-
-  def get_draws
-    @draws
-  end
-
-  def set_draws
-    @draws += 1
+    false
   end
 
   # Check winner
   def check(check_win_meth)
-    if check_win_meth != false
-      puts "The winner is #{check_win_meth.name}"
-      true
-    end
+    return unless check_win_meth != false
+
+    puts "The winner is #{check_win_meth.name}"
+
+    true
   end
 end
+
+# rubocop:enable Layout/LineLength

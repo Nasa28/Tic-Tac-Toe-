@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
-# frozen_string_literal: true
+
+# rubocop:disable Metrics/BlockNesting
 
 require_relative './lib/game_logic.rb'
 
@@ -60,7 +61,9 @@ while repeat
         board.display_board
         winner = game.check(game.check_win(board.board, player1))
         if winner == true
+          # rubocop:disable Layout/LineLength
           puts "\n \nThe result is \n #{player1.name}(#{player1.winnings}) VS #{player2.name}(#{player2.winnings}) \n \n Draws >> #{game.draws} "
+          # rubocop:enable Layout/LineLength
         end
         want = true if winner == true
         while want
@@ -81,7 +84,9 @@ while repeat
         if board.board.none?(Numeric)
           puts 'This is a draw'
           game.set_draws
+          # rubocop:disable Layout/LineLength
           puts "\n \nThe result is \n #{player1.name}(#{player1.winnings}) VS #{player2.name}(#{player2.winnings}) \n \n Draws >> #{game.draws} "
+          # rubocop:enable Layout/LineLength
           draw = true
           want = true
           while want
@@ -117,7 +122,9 @@ while repeat
         board.display_board
         winner = game.check(game.check_win(board.board, player2))
         if winner == true
+          # rubocop:disable Layout/LineLength
           puts "\n \nThe result is \n #{player1.name}(#{player1.winnings}) VS #{player2.name}(#{player2.winnings}) \n \n Draws >> #{game.draws} \n \n"
+          # rubocop:enable Layout/LineLength
         end
         want = true if winner == true
         while want
@@ -138,7 +145,9 @@ while repeat
         if board.board.none?(Numeric)
           puts 'This is a draw'
           game.set_draws
+          # rubocop:disable Layout/LineLength
           puts "\n \nThe result is \n #{player1.name}(#{player1.winnings}) VS #{player2.name}(#{player2.winnings}) \n \n Draws >> #{game.draws} "
+          # rubocop:enable Layout/LineLength
           draw = true
           want = true
           while want
@@ -162,6 +171,8 @@ while repeat
     end
 
     break if winner || draw
-    end
+  end
 
 end
+
+# rubocop:enable Metrics/BlockNesting
