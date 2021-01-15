@@ -1,21 +1,19 @@
-# Class of Player
-
+# Class player
 class Player
   attr_reader :name, :symbol
-  
 
   def initialize(name, symbol)
-      @name   = name
-      @symbol = symbol
-      @winTimes = 0
+    @name = name
+    @symbol = symbol
+    @win_times = 0
   end
 
-  def getWinnings
-    @winTimes
+  def winnings
+    @win_times
   end
 
-  def setWinnings
-    @winTimes +=1
+  def set_winnings
+    @win_times += 1
   end
 end
 
@@ -23,75 +21,47 @@ end
 class Board
   attr_accessor :board
   def initialize
-      @board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-      @totalM = 0
+    @board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
   end
 
-  def updateBoard(number, symbol)
-      @board[number-1] = symbol
+  def update_board(number, symbol)
+    @board[number - 1] = symbol
   end
 
-  def displayBoard
-      puts "#{@board[0]} | #{@board[1]} | #{@board[2]}"
-      puts "---------"
-      puts "#{@board[3]} | #{@board[4]} | #{@board[5]}"
-      puts "---------"
-      puts "#{@board[6]} | #{@board[7]} | #{@board[8]}"
-      @totalM += 1
+  def display_board
+    puts "#{@board[0]} | #{@board[1]} | #{@board[2]}"
+    puts '---------'
+    puts "#{@board[3]} | #{@board[4]} | #{@board[5]}"
+    puts '---------'
+    puts "#{@board[6]} | #{@board[7]} | #{@board[8]}"
   end
 end
 
 # Class of Game
 class Game
   attr_accessor :draws
+
   def initialize
     @draws = 0
   end
 
-  def checkWin(board, player)
-    if(board[0] == board[1] && board[1] == board[2] || board[3] == board[4] && board[4] == board[5] || board[6] == board[7] && board[7]== board[8])
-      player.setWinnings
-      return player
-    elsif(board[0] == board[3] && board[3] == board[6] || board[1] == board[4] && board[4] == board[7] || board[2] == board[5] && board[5]== board[8])
-      player.setWinnings
-      return player
-    elsif(board[0] == board[4] && board[4] == board[8] || board[2] == board[4] && board[4] == board[6])
-      player.setWinnings
-      return player
-    else
-      return false
+  def check_win(board, player)
+    check = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 4, 8], [2, 4, 6], [0, 3, 6], [1, 4, 7], [2, 5, 8]]
+    check.each do |arr|
+      if board[arr[0]] == board[arr[1]] && board[arr[1]] == board[arr[2]]
+        player.set_winnings
+        return player
+      end
     end
+    false
   end
 
-def wining(symbol)
-  check_winning = [[0,1,2], [3,4,5], [6,7,8], [0, 4, 8], [2,4,6],[0,3,6],[1,4,7], [2,5,8]]
-  check_winning.each { |arr| return true if arr[0] = arr[1] && arr[1] = arr[2]}
+  # Check winner
+  def check(check_win_meth)
+    return unless check_win_meth != false
+
+    puts "The winner is #{check_win_meth.name}"
+
+    true
   end
-  
-
-
-  def getDraws
-    @draws
-  end
-
-  def setDraws
-    @draws +=1
-  end
-
-# Check winner
-  def check(gameCheckWinMethod)
-    if gameCheckWinMethod != false
-      puts "The winner is #{gameCheckWinMethod.name}"
-      return true
-    end
-  end
-
 end
-
-
-
-
-
-
-
-

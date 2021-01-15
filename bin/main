@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+# rubocop:disable Metrics/BlockNesting
+
 require_relative './lib/game_logic.rb'
 
 # Say welcome for the players
@@ -11,7 +13,6 @@ player_one_name = gets.chomp.capitalize
 puts 'Player_two, Enter your name'
 
 player_two_name = gets.chomp.capitalize
-
 
 # Ask them to choose symbol
 
@@ -37,57 +38,69 @@ puts "#{player2.name} your symbol is #{player2.symbol}"
 
 # display the body game "the board"
 game = Game.new
-board = Board.new
 
-repeat = false
+repeat = true
 
-# while repeat
+while repeat
+  board = Board.new
   game_on = true
   # initial instructions for player
-board.displayBoard
+  board.display_board
   while game_on
     winner = false
     draw = false
 
-        # loop for each move
-    puts '#{player1.name}, your turn. Choose a number between 1 and 9'
+    # loop for each move
+    puts "#{player1.name}, your turn. Choose a number between 1 and 9"
     movement = false
     while movement == false
       p_one = gets.chomp.to_i
       if board.board.include?(p_one)
         movement = true
-        board.updateBoard(p_one, player1.symbol)
-        board.displayBoard
-        winner = game.check(game.checkWin(board.board, player1))
-        puts "\n \nThe result is \n #{player1.name}(#{player1.getWinnings}) VS #{player2.name}(#{player2.getWinnings}) \n \n Draws >> #{game.draws} " if winner ==true 
-        want = true if winner ==true 
+        board.update_board(p_one, player1.symbol)
+        board.display_board
+        winner = game.check(game.check_win(board.board, player1))
+        if winner == true
+          # rubocop:disable Layout/LineLength
+          puts "\n \nThe result is \n #{player1.name}(#{player1.winnings}) VS #{player2.name}(#{player2.winnings}) \n \n Draws >> #{game.draws} "
+          # rubocop:enable Layout/LineLength
+        end
+        want = true if winner == true
         while want
-          puts "Do you want to play again? [y, n]"
+          puts 'Do you want to play again? [y, n]'
           again = gets.chomp
           if again == 'y'
             repeat = true
             want = false
-          elsif again == "n"
+          elsif again == 'n'
+            repeat = false
             puts 'end game'
             want = false
             game_on = false
+            break if winner
           end
         end
 
-        if(board.board.any?(!Numeric))
-          game.setDraws
+        if board.board.none?(Numeric)
+          puts 'This is a draw'
+          game.set_draws
+          # rubocop:disable Layout/LineLength
+          puts "\n \nThe result is \n #{player1.name}(#{player1.winnings}) VS #{player2.name}(#{player2.winnings}) \n \n Draws >> #{game.draws} "
+          # rubocop:enable Layout/LineLength
           draw = true
           want = true
           while want
-            puts "Do you want to play again? [y, n]"
+            puts 'Do you want to play again? [y, n]'
             again = gets.chomp
             if again == 'y'
               repeat = true
               want = false
-            elsif again == "n"
+            elsif again == 'n'
               puts 'end game'
+              repeat = false
               want = false
               game_on = false
+              break if draw
             end
           end
         end
@@ -95,51 +108,60 @@ board.displayBoard
         puts 'wrong input'
       end
     end
- 
 
-    # game_on = false if winner || draw
     break if winner || draw
-    
 
     # loop for each move
-    puts '#{player2.name}, your turn. Choose a number between 1 and 9'
+    puts "#{player2.name}, your turn. Choose a number between 1 and 9"
     movement = false
     while movement == false
       p_two = gets.chomp.to_i
       if board.board.include?(p_two)
         movement = true
-        board.updateBoard(p_two, player2.symbol)
-        board.displayBoard
-        winner = game.check(game.checkWin(board.board, player2))
-        puts "\n \nThe result is \n #{player1.name}(#{player1.getWinnings}) VS #{player2.name}(#{player2.getWinnings}) \n \n Draws >> #{game.draws} \n \n" if winner ==true 
-        want = true if winner ==true 
+        board.update_board(p_two, player2.symbol)
+        board.display_board
+        winner = game.check(game.check_win(board.board, player2))
+        if winner == true
+          # rubocop:disable Layout/LineLength
+          puts "\n \nThe result is \n #{player1.name}(#{player1.winnings}) VS #{player2.name}(#{player2.winnings}) \n \n Draws >> #{game.draws} \n \n"
+          # rubocop:enable Layout/LineLength
+        end
+        want = true if winner == true
         while want
-          puts "Do you want to play again? [y, n]"
+          puts 'Do you want to play again? [y, n]'
           again = gets.chomp
           if again == 'y'
             repeat = true
             want = false
-          elsif again == "n"
+          elsif again == 'n'
             puts 'end game'
+            repeat = false
             want = false
             game_on = false
+            break if winner
           end
         end
 
-        if(board.board.any?(!Numeric))
-          game.setDraws
+        if board.board.none?(Numeric)
+          puts 'This is a draw'
+          game.set_draws
+          # rubocop:disable Layout/LineLength
+          puts "\n \nThe result is \n #{player1.name}(#{player1.winnings}) VS #{player2.name}(#{player2.winnings}) \n \n Draws >> #{game.draws} "
+          # rubocop:enable Layout/LineLength
           draw = true
           want = true
           while want
-            puts "Do you want to play again? [y, n]"
+            puts 'Do you want to play again? [y, n]'
             again = gets.chomp
             if again == 'y'
               repeat = true
               want = false
-            elsif again == "n"
+            elsif again == 'n'
               puts 'end game'
+              repeat = false
               want = false
               game_on = false
+              break if draw
             end
           end
         end
@@ -147,11 +169,10 @@ board.displayBoard
         puts 'wrong input'
       end
     end
-    # game_on = false if winner || draw
+
     break if winner || draw
-    end
- 
-  
+  end
 
+end
 
-# end  
+# rubocop:enable Metrics/BlockNesting
