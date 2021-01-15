@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 # Class of Player
+
 class Player
   attr_reader :name, :symbol
 
@@ -59,10 +62,19 @@ class Game
     end
   end
 
+  def get_draws
+    @draws
+  end
+
+  def set_draws
+    @draws += 1
+  end
+
   # Check winner
   def check(check_win_meth)
-    return true unless check_win_meth == true
-
-    puts "The winner is #{check_win_meth.name}" unless check_win_meth == true
+    if check_win_meth != false
+      puts "The winner is #{check_win_meth.name}"
+      true
+    end
   end
 end

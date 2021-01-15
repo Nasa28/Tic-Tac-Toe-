@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
-# rubocop:disable Metrics/ModuleLength
-# rubocop:disable Metrics/CyclomaticComplexity
-# rubocop:disable Metrics/PerceivedComplexity
+# frozen_string_literal: true
+
 require_relative './lib/game_logic.rb'
 
 # Say welcome for the players
@@ -163,9 +162,6 @@ while repeat
     end
 
     break if winner || draw
-  end
+    end
 
 end
-# rubocop:enable Metrics/ModuleLength
-# rubocop:enable Metrics/CyclomaticComplexity
-# rubocop:enable Metrics/PerceivedComplexity
