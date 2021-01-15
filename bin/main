@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
+
 # rubocop:disable Metrics/BlockNesting
 
 require_relative '../lib/game_logic'
