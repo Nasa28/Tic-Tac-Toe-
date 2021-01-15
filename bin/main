@@ -104,7 +104,7 @@ board.displayBoard
     end
  
 
-    # game_on = false if winner || draw
+    
     break if winner || draw
     
 
@@ -160,7 +160,7 @@ board.displayBoard
         puts 'wrong input'
       end
     end
-    # game_on = false if winner || draw
+    
     break if winner || draw
     end
  
