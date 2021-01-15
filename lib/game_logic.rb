@@ -24,7 +24,7 @@ class Board
   attr_accessor :board
   def initialize
       @board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-      @totalM = 0
+      # @totalM = 0
   end
 
   def updateBoard(number, symbol)
@@ -37,7 +37,7 @@ class Board
       puts "#{@board[3]} | #{@board[4]} | #{@board[5]}"
       puts "---------"
       puts "#{@board[6]} | #{@board[7]} | #{@board[8]}"
-      @totalM += 1
+      # @totalM += 1
   end
 end
 
@@ -83,8 +83,4 @@ end
 
 
 
-
-
-
-
-
+ 

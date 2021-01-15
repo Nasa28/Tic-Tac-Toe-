@@ -37,11 +37,12 @@ puts "#{player2.name} your symbol is #{player2.symbol}"
 
 # display the body game "the board"
 game = Game.new
-board = Board.new
 
-repeat = false
 
-# while repeat
+repeat = true
+
+while repeat
+  board = Board.new
   game_on = true
   # initial instructions for player
 board.displayBoard
@@ -50,7 +51,7 @@ board.displayBoard
     draw = false
 
         # loop for each move
-    puts '#{player1.name}, your turn. Choose a number between 1 and 9'
+    puts "#{player1.name}, your turn. Choose a number between 1 and 9"
     movement = false
     while movement == false
       p_one = gets.chomp.to_i
@@ -68,14 +69,17 @@ board.displayBoard
             repeat = true
             want = false
           elsif again == "n"
+            repeat = false
             puts 'end game'
             want = false
             game_on = false
+            break if winner
           end
         end
 
-        if(board.board.any?(!Numeric))
+        if(board.board.none?(Numeric))
           game.setDraws
+          puts "\n \nThe result is \n #{player1.name}(#{player1.getWinnings}) VS #{player2.name}(#{player2.getWinnings}) \n \n Draws >> #{game.draws} "
           draw = true
           want = true
           while want
@@ -86,8 +90,10 @@ board.displayBoard
               want = false
             elsif again == "n"
               puts 'end game'
+              repeat = false
               want = false
               game_on = false
+              break if draw
             end
           end
         end
@@ -102,7 +108,7 @@ board.displayBoard
     
 
     # loop for each move
-    puts '#{player2.name}, your turn. Choose a number between 1 and 9'
+    puts "#{player2.name}, your turn. Choose a number between 1 and 9"
     movement = false
     while movement == false
       p_two = gets.chomp.to_i
@@ -121,13 +127,16 @@ board.displayBoard
             want = false
           elsif again == "n"
             puts 'end game'
+            repeat = false
             want = false
             game_on = false
+            break if winner 
           end
         end
 
-        if(board.board.any?(!Numeric))
+        if(board.board.none?(Numeric))
           game.setDraws
+          puts "\n \nThe result is \n #{player1.name}(#{player1.getWinnings}) VS #{player2.name}(#{player2.getWinnings}) \n \n Draws >> #{game.draws} "
           draw = true
           want = true
           while want
@@ -138,8 +147,10 @@ board.displayBoard
               want = false
             elsif again == "n"
               puts 'end game'
+              repeat = false
               want = false
               game_on = false
+              break if draw
             end
           end
         end
@@ -154,4 +165,4 @@ board.displayBoard
   
 
 
-# end  
+end
