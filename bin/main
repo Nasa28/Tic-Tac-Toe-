@@ -78,6 +78,7 @@ board.displayBoard
         end
 
         if(board.board.none?(Numeric))
+          puts "This is a draw"
           game.setDraws
           puts "\n \nThe result is \n #{player1.name}(#{player1.getWinnings}) VS #{player2.name}(#{player2.getWinnings}) \n \n Draws >> #{game.draws} "
           draw = true
@@ -135,6 +136,7 @@ board.displayBoard
         end
 
         if(board.board.none?(Numeric))
+          puts "This is a draw"
           game.setDraws
           puts "\n \nThe result is \n #{player1.name}(#{player1.getWinnings}) VS #{player2.name}(#{player2.getWinnings}) \n \n Draws >> #{game.draws} "
           draw = true
@@ -163,6 +165,4 @@ board.displayBoard
     end
  
   
-
-
 end
