@@ -1,5 +1,3 @@
-# rubocop:disable Layout/LineLength
-
 # Class player
 class Player
   attr_reader :name, :symbol
@@ -67,5 +65,3 @@ class Game
     true
   end
 end
-
-# rubocop:enable Layout/LineLength
