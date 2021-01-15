@@ -2,7 +2,7 @@
 
 # rubocop:disable Metrics/BlockNesting
 
-require_relative './lib/game_logic.rb'
+require_relative '../lib/game_logic.rb'
 
 # Say welcome for the players
 puts 'Welcome to the Tic Tac Toe '
