@@ -19,7 +19,8 @@ end
 
 # Class of Board
 class Board
-  attr_accessor :board
+  attr_reader :board
+
   def initialize
     @board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
   end
@@ -39,7 +40,7 @@ end
 
 # Class of Game
 class Game
-  attr_accessor :draws
+  attr_reader :draws
 
   def initialize
     @draws = 0
@@ -59,9 +60,6 @@ class Game
   # Check winner
   def check(check_win_meth)
     return unless check_win_meth != false
-
-    puts "The winner is #{check_win_meth.name}"
-
     true
+    end
   end
-end

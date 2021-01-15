@@ -1,21 +1,14 @@
 #!/usr/bin/env ruby
-
 # rubocop:disable Metrics/BlockNesting
 
-require_relative '../lib/game_logic.rb'
+require_relative '../lib/game_logic'
 
-# Say welcome for the players
 puts 'Welcome to the Tic Tac Toe '
-
-# Ask for the username
 puts 'Player_one, Enter your name'
 player_one_name = gets.chomp.capitalize
 puts 'Player_two, Enter your name'
 
 player_two_name = gets.chomp.capitalize
-
-# Ask them to choose symbol
-
 symp = false
 
 while symp == false
@@ -44,8 +37,7 @@ repeat = true
 while repeat
   board = Board.new
   game_on = true
-  # initial instructions for player
-  board.display_board
+  puts board.display_board
   while game_on
     winner = false
     draw = false
@@ -61,6 +53,7 @@ while repeat
         board.display_board
         winner = game.check(game.check_win(board.board, player1))
         if winner == true
+          puts "The winner is #{player1.name}"
           # rubocop:disable Layout/LineLength
           puts "\n \nThe result is \n #{player1.name}(#{player1.winnings}) VS #{player2.name}(#{player2.winnings}) \n \n Draws >> #{game.draws} "
           # rubocop:enable Layout/LineLength
@@ -69,10 +62,11 @@ while repeat
         while want
           puts 'Do you want to play again? [y, n]'
           again = gets.chomp
-          if again == 'y'
+          case again
+          when 'y'
             repeat = true
             want = false
-          elsif again == 'n'
+          when 'n'
             repeat = false
             puts 'end game'
             want = false
@@ -92,10 +86,11 @@ while repeat
           while want
             puts 'Do you want to play again? [y, n]'
             again = gets.chomp
-            if again == 'y'
+            case again
+            when 'y'
               repeat = true
               want = false
-            elsif again == 'n'
+            when 'n'
               puts 'end game'
               repeat = false
               want = false
@@ -122,6 +117,7 @@ while repeat
         board.display_board
         winner = game.check(game.check_win(board.board, player2))
         if winner == true
+          puts "The winner is #{player2.name}"
           # rubocop:disable Layout/LineLength
           puts "\n \nThe result is \n #{player1.name}(#{player1.winnings}) VS #{player2.name}(#{player2.winnings}) \n \n Draws >> #{game.draws} \n \n"
           # rubocop:enable Layout/LineLength
@@ -130,10 +126,11 @@ while repeat
         while want
           puts 'Do you want to play again? [y, n]'
           again = gets.chomp
-          if again == 'y'
+          case again
+          when 'y'
             repeat = true
             want = false
-          elsif again == 'n'
+          when 'n'
             puts 'end game'
             repeat = false
             want = false
@@ -153,10 +150,11 @@ while repeat
           while want
             puts 'Do you want to play again? [y, n]'
             again = gets.chomp
-            if again == 'y'
+            case again
+            when 'y'
               repeat = true
               want = false
-            elsif again == 'n'
+            when 'n'
               puts 'end game'
               repeat = false
               want = false
