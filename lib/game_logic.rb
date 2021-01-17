@@ -47,7 +47,7 @@ class Game
   end
 
   def set_draws
-    @draws +=1
+    @draws += 1
   end
 
   def check_win(board, player)
