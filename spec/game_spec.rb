@@ -1,6 +1,5 @@
-# frozen_string_literal: true
-
 require_relative '../lib/game_logic'
+
 describe Board do
   let(:board) { Board.new }
   describe '#initialize' do
@@ -162,4 +161,3 @@ describe Game do
     end
   end
 end
-
