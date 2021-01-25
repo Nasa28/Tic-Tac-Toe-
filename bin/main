@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 # rubocop:disable Metrics/BlockNesting
+# rubocop:disable Layout/LineLength
 
 require_relative '../lib/game_logic'
 
@@ -166,4 +167,5 @@ while repeat
 
 end
 
+# rubocop:enable Layout/LineLength
 # rubocop:enable Metrics/BlockNesting
