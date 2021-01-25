@@ -40,7 +40,7 @@ describe Game do
   game = Game.new
   player = Player.new('kk', 'X')
   describe 'check_win' do
-    it 'first row wins' do
+    it 'first col wins' do
       board = Board.new
       board.update_board(1, 'X')
       board.update_board(4, 'X')
@@ -54,7 +54,7 @@ describe Game do
   game = Game.new
   player = Player.new('kk', 'X')
   describe 'check_win' do
-    it 'first row wins' do
+    it 'first diagonal wins' do
       board = Board.new
       board.update_board(1, 'X')
       board.update_board(5, 'X')
@@ -68,7 +68,7 @@ describe Game do
   game = Game.new
   player = Player.new('kk', 'X')
   describe 'check_win' do
-    it 'first row wins' do
+    it 'second row wins' do
       board = Board.new
       board.update_board(4, 'X')
       board.update_board(5, 'X')
@@ -82,7 +82,7 @@ describe Game do
   game = Game.new
   player = Player.new('kk', 'X')
   describe 'check_win' do
-    it 'first row wins' do
+    it 'third row wins' do
       board = Board.new
       board.update_board(7, 'X')
       board.update_board(8, 'X')
@@ -96,7 +96,7 @@ describe Game do
   game = Game.new
   player = Player.new('kk', 'X')
   describe 'check_win' do
-    it 'first row wins' do
+    it 'second diagonal wins' do
       board = Board.new
       board.update_board(3, 'X')
       board.update_board(5, 'X')
@@ -110,7 +110,7 @@ describe Game do
   game = Game.new
   player = Player.new('kk', 'X')
   describe 'check_win' do
-    it 'first row wins' do
+    it 'second col wins' do
       board = Board.new
       board.update_board(2, 'X')
       board.update_board(5, 'X')
@@ -124,7 +124,7 @@ describe Game do
   game = Game.new
   player = Player.new('kk', 'X')
   describe 'check_win' do
-    it 'first row wins' do
+    it 'third col wins' do
       board = Board.new
       board.update_board(3, 'X')
       board.update_board(6, 'X')
