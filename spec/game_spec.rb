@@ -36,3 +36,130 @@ describe Game do
     end
   end
 end
+
+describe Game do
+  game = Game.new
+  player = Player.new('kk', 'X')
+  describe 'check_win' do
+    it 'first row wins' do
+      board = Board.new
+      board.update_board(1, 'X')
+      board.update_board(4, 'X')
+      board.update_board(7, 'X')
+      expect(game.check_win(board.board, player)).to eq(player)
+    end
+  end
+end
+
+describe Game do
+  game = Game.new
+  player = Player.new('kk', 'X')
+  describe 'check_win' do
+    it 'first row wins' do
+      board = Board.new
+      board.update_board(1, 'X')
+      board.update_board(5, 'X')
+      board.update_board(9, 'X')
+      expect(game.check_win(board.board, player)).to eq(player)
+    end
+  end
+end
+
+describe Game do
+  game = Game.new
+  player = Player.new('kk', 'X')
+  describe 'check_win' do
+    it 'first row wins' do
+      board = Board.new
+      board.update_board(4, 'X')
+      board.update_board(5, 'X')
+      board.update_board(6, 'X')
+      expect(game.check_win(board.board, player)).to eq(player)
+    end
+  end
+end
+
+describe Game do
+  game = Game.new
+  player = Player.new('kk', 'X')
+  describe 'check_win' do
+    it 'first row wins' do
+      board = Board.new
+      board.update_board(7, 'X')
+      board.update_board(8, 'X')
+      board.update_board(9, 'X')
+      expect(game.check_win(board.board, player)).to eq(player)
+    end
+  end
+end
+
+describe Game do
+  game = Game.new
+  player = Player.new('kk', 'X')
+  describe 'check_win' do
+    it 'first row wins' do
+      board = Board.new
+      board.update_board(3, 'X')
+      board.update_board(5, 'X')
+      board.update_board(7, 'X')
+      expect(game.check_win(board.board, player)).to eq(player)
+    end
+  end
+end
+
+describe Game do
+  game = Game.new
+  player = Player.new('kk', 'X')
+  describe 'check_win' do
+    it 'first row wins' do
+      board = Board.new
+      board.update_board(2, 'X')
+      board.update_board(5, 'X')
+      board.update_board(8, 'X')
+      expect(game.check_win(board.board, player)).to eq(player)
+    end
+  end
+end
+
+describe Game do
+  game = Game.new
+  player = Player.new('kk', 'X')
+  describe 'check_win' do
+    it 'first row wins' do
+      board = Board.new
+      board.update_board(3, 'X')
+      board.update_board(6, 'X')
+      board.update_board(9, 'X')
+      expect(game.check_win(board.board, player)).to eq(player)
+    end
+  end
+end
+
+describe Game do
+  game = Game.new
+  player = Player.new('kk', 'X')
+  describe 'check if there is a winner' do
+    it 'x wins' do
+      board = Board.new
+      board.update_board(1, 'X')
+      board.update_board(2, 'X')
+      board.update_board(3, 'X')
+      expect(game.check(game.check_win(board.board, player))).to eq(true)
+    end
+  end
+end
+
+describe Game do
+  game = Game.new
+  player = Player.new('kk', 'X')
+  describe 'check if there is a winner' do
+    it 'x wins' do
+      board = Board.new
+      board.update_board(4, 'X')
+      board.update_board(2, 'X')
+      board.update_board(3, 'X')
+      expect(game.check(game.check_win(board.board, player))).to eq(false)
+    end
+  end
+end
+
