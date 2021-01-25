@@ -65,7 +65,7 @@ class Game
 
   # Check winner
   def check(check_win_meth)
-    return unless check_win_meth != false
+    return false unless check_win_meth != false
 
     true
   end
