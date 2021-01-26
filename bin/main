@@ -161,7 +161,6 @@ while repeat
         puts 'wrong input'
       end
     end
-
     break if winner || draw
   end
 

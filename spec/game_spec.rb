@@ -7,28 +7,22 @@ describe Player do
       expect(player.instance_of?(Player)).to eq(true)
     end
   end
-end
 
-describe Player do
   describe 'instantiate Player class' do
-    it 'creates an instance of player with two attribute values' do
+    it 'raises an error if a player is instantiated without any parameters' do
       expect { Player.new }.to raise_error
     end
   end
-end
 
-describe Player do
   describe 'instantiate Player class' do
-    it 'creates an instance of player with two attribute values' do
+    it 'returns the value of the @name instance variable.' do
       player = Player.new('kevin', 'X')
       expect(player.name).to eq('kevin')
     end
   end
-end
 
-describe Player do
   describe 'instantiate Player class' do
-    it 'creates an instance of player with two attribute values' do
+    it 'returns the value of the @symbol instance variable.' do
       player = Player.new('kevin', 'X')
       expect(player.symbol).to eq('X')
     end
@@ -44,7 +38,7 @@ describe Board do
   end
 
   describe '#initialize instantiates .Board class' do
-    it 'creates an instance of .Board' do
+    it 'raises an error if a .Board is instantiated with any arguments' do
       arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
       expect { Board.new(arr) }.to raise_error
     end
