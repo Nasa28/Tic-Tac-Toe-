@@ -1,5 +1,34 @@
 require_relative '../lib/game_logic'
 
+describe Player do
+  describe 'instantiate Player class' do
+    it 'creates an instance of player with two attribute values' do
+      player = Player.new('kevin', 'X')
+      expect(player.instance_of?(Player)).to eq(true)
+    end
+  end
+
+  describe 'instantiate Player class' do
+    it 'raises an error if a player is instantiated without any parameters' do
+      expect { Player.new }.to raise_error
+    end
+  end
+
+  describe 'instantiate Player class' do
+    it 'returns the value of the @name instance variable.' do
+      player = Player.new('kevin', 'X')
+      expect(player.name).to eq('kevin')
+    end
+  end
+
+  describe 'instantiate Player class' do
+    it 'returns the value of the @symbol instance variable.' do
+      player = Player.new('kevin', 'X')
+      expect(player.symbol).to eq('X')
+    end
+  end
+end
+
 describe Board do
   let(:board) { Board.new }
   describe '#initialize' do
@@ -19,6 +48,11 @@ describe Board do
     board.update_board 8, 'X'
     board.update_board 9, 'O'
     expect(board.draw_method).to eq(true)
+
+  describe '#initialize instantiates .Board class' do
+    it 'raises an error if a .Board is instantiated with any arguments' do
+      arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+      expect { Board.new(arr) }.to raise_error
     end
   end
 
