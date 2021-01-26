@@ -1,6 +1,5 @@
-# frozen_string_literal: true
-
 require_relative '../lib/game_logic'
+
 describe Board do
   let(:board) { Board.new }
   describe '#initialize' do
@@ -8,10 +7,26 @@ describe Board do
       expect(board.board).to eql [1, 2, 3, 4, 5, 6, 7, 8, 9]
     end
   end
+  describe '#check_draw' do
+    it 'checks for draw' do
+    board.update_board 1, 'O'
+    board.update_board 2, 'X'
+    board.update_board 3, 'O'
+    board.update_board 4, 'X'
+    board.update_board 5, 'O'
+    board.update_board 6, 'X'
+    board.update_board 7, 'O'
+    board.update_board 8, 'X'
+    board.update_board 9, 'O'
+    expect(board.draw_method).to eq(true)
+    end
+  end
+
   describe '#update_board' do
     it 'Makes a movement and update board' do
-      board.update_board 7, 'O'
-      expect(board.board).to eql [1, 2, 3, 4, 5, 6, 'O', 8, 9]
+      board.update_board 2, 'O'
+      board.update_board 2, 'X'
+      expect(board.board).to eql [1, "O", 3, 4, 5, 6, 7, 8, 9]
     end
     it 'The items in the board starts with 1' do
       expect(board.board).to start_with(1)
@@ -21,7 +36,6 @@ describe Board do
       expect(board.board).to end_with(9)
     end
   end
-end
 
 describe Game do
   game = Game.new
@@ -41,7 +55,7 @@ describe Game do
   game = Game.new
   player = Player.new('kk', 'X')
   describe 'check_win' do
-    it 'first row wins' do
+    it 'first col wins' do
       board = Board.new
       board.update_board(1, 'X')
       board.update_board(4, 'X')
@@ -55,7 +69,7 @@ describe Game do
   game = Game.new
   player = Player.new('kk', 'X')
   describe 'check_win' do
-    it 'first row wins' do
+    it 'first diagonal wins' do
       board = Board.new
       board.update_board(1, 'X')
       board.update_board(5, 'X')
@@ -69,7 +83,7 @@ describe Game do
   game = Game.new
   player = Player.new('kk', 'X')
   describe 'check_win' do
-    it 'first row wins' do
+    it 'second row wins' do
       board = Board.new
       board.update_board(4, 'X')
       board.update_board(5, 'X')
@@ -83,7 +97,7 @@ describe Game do
   game = Game.new
   player = Player.new('kk', 'X')
   describe 'check_win' do
-    it 'first row wins' do
+    it 'third row wins' do
       board = Board.new
       board.update_board(7, 'X')
       board.update_board(8, 'X')
@@ -97,7 +111,7 @@ describe Game do
   game = Game.new
   player = Player.new('kk', 'X')
   describe 'check_win' do
-    it 'first row wins' do
+    it 'second diagonal wins' do
       board = Board.new
       board.update_board(3, 'X')
       board.update_board(5, 'X')
@@ -111,7 +125,7 @@ describe Game do
   game = Game.new
   player = Player.new('kk', 'X')
   describe 'check_win' do
-    it 'first row wins' do
+    it 'second col wins' do
       board = Board.new
       board.update_board(2, 'X')
       board.update_board(5, 'X')
@@ -125,7 +139,7 @@ describe Game do
   game = Game.new
   player = Player.new('kk', 'X')
   describe 'check_win' do
-    it 'first row wins' do
+    it 'third col wins' do
       board = Board.new
       board.update_board(3, 'X')
       board.update_board(6, 'X')
@@ -162,4 +176,4 @@ describe Game do
     end
   end
 end
-
+end

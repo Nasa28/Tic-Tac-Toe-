@@ -1,6 +1,3 @@
-# frozen_string_literal: true
-
-# Class player
 class Player
   attr_reader :name, :symbol
 
@@ -28,7 +25,20 @@ class Board
   end
 
   def update_board(number, symbol)
+    if @board.include?(number)
     @board[number - 1] = symbol
+    else
+      "Wrong Input"
+    end
+  end
+
+  def draw_method 
+    check = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 4, 8], [2, 4, 6], [0, 3, 6], [1, 4, 7], [2, 5, 8]]
+    check.each do |arr|
+      if board[arr[0]] != board[arr[1]] && @board.none?(Numeric)
+        return true
+      end
+    end
   end
 
   def display_board
