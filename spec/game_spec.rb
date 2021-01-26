@@ -1,5 +1,40 @@
 require_relative '../lib/game_logic'
 
+describe Player do
+  describe 'instantiate Player class' do
+    it 'creates an instance of player with two attribute values' do
+      player = Player.new('kevin', 'X')
+      expect(player.instance_of?(Player)).to eq(true)
+    end
+  end
+end
+
+describe Player do
+  describe 'instantiate Player class' do
+    it 'creates an instance of player with two attribute values' do
+      expect { Player.new }.to raise_error
+    end
+  end
+end
+
+describe Player do
+  describe 'instantiate Player class' do
+    it 'creates an instance of player with two attribute values' do
+      player = Player.new('kevin', 'X')
+      expect(player.name).to eq('kevin')
+    end
+  end
+end
+
+describe Player do
+  describe 'instantiate Player class' do
+    it 'creates an instance of player with two attribute values' do
+      player = Player.new('kevin', 'X')
+      expect(player.symbol).to eq('X')
+    end
+  end
+end
+
 describe Board do
   let(:board) { Board.new }
   describe '#initialize' do
@@ -7,6 +42,14 @@ describe Board do
       expect(board.board).to eql [1, 2, 3, 4, 5, 6, 7, 8, 9]
     end
   end
+
+  describe '#initialize instantiates .Board class' do
+    it 'creates an instance of .Board' do
+      arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+      expect { Board.new(arr) }.to raise_error
+    end
+  end
+
   describe '#update_board' do
     it 'Makes a movement and update board' do
       board.update_board 7, 'O'
