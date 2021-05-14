@@ -1,2 +1,95 @@
 #!/usr/bin/env ruby
-puts 'Hello, world! '
+# Say welcome for the players
+puts 'Welcome to the Tic Tac Toe '
+
+# Ask for the username
+puts 'Player_one, Enter your name'
+player_one = gets.chomp.capitalize
+puts 'Player_two, Enter your name'
+
+player_two = gets.chomp.capitalize
+
+puts "Hi #{player_one} and #{player_two} welcome to Tic Tac Toe game"
+# Ask them to choose symbol
+
+symp = false
+
+while symp == false
+  puts " #{player_one} Please enter your symbol [X, O]"
+  player1_symp = gets.chomp.upcase
+  if %w[X O].include?(player1_symp)
+    symp = true
+    player2_symp = (player1_symp == 'X' ? 'O' : 'X')
+  else
+    puts 'Invalid symbol'
+  end
+end
+
+puts "#{player_one} your symbol is #{player1_symp}"
+puts "#{player_two} your symbol is #{player2_symp}"
+
+# display the body game "the board"
+def board
+  board_arr = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+  p board_arr[0]
+  p board_arr[1]
+  p board_arr[2]
+end
+# ask the first player to make his first move puts "Your movement"
+
+game_on = true
+winner = false
+draw = false
+# initial instructions for player
+
+while game_on
+  puts 'Player_1 your turn. Choose a number between 1 and 9'
+  # loop for each move
+  movement = false
+  while movement == false
+    p_one = gets.chomp.to_i
+    if (1..9).include?(p_one)
+      movement = true
+      board
+    else
+      puts 'wrong input'
+    end
+  end
+
+  game_on = false if winner || draw
+
+  # loop for each move
+  puts 'Player_2 your turn. Choose a number between 1 and 9'
+  movement = false
+  while movement == false
+    p_two = gets.chomp.to_i
+    if (1..9).include?(p_two)
+      movement = true
+      board
+      winner = player_one.to_s
+    else
+      puts 'wrong input'
+    end
+  end
+
+  game_on = false if winner || draw
+
+end
+
+# display the result after winning
+winning = 'winning cases'
+puts "The winner is #{winner}" if winning
+
+#  draww movement
+puts 'There is no winner, It is a DRAW' if draw
+
+# Ask "do you want to play again ?" >> or close the game (y, n)
+puts 'Do you want to play again? [y/n]'
+again = gets.chomp
+case again
+when 'y'
+  puts 'play again'
+
+when 'n'
+  puts 'end game'
+end
